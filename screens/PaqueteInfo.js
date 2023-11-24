@@ -12,7 +12,7 @@ const PaqueteInfo = ({route}) => {
     });
     const loadInfo = async () =>{
       try{
-          const url = `https://d71d-2806-2f0-91a1-850d-e0ad-1c4c-139f-88c1.ngrok-free.app/donacion/${id}`;
+          const url = `https://b359-38-123-196-127.ngrok-free.app/donacion/${id}`;
           const response = await axios.get(url);
           setData(response.data);
           

@@ -11,8 +11,9 @@ const Ninos = () => {
   
     const loadNinos = async () =>{
       try{
-          const url = 'https://b169-2806-2f0-91a1-850d-4dd5-4ea1-dff2-c37d.ngrok-free.app/ninoss';
+          const url = 'https://d71d-2806-2f0-91a1-850d-e0ad-1c4c-139f-88c1.ngrok-free.app/ninos';
           const response = await axios.get(url);
+          
           setNino(response.data);
       }catch(err){
           console.log(err);

@@ -1,37 +1,29 @@
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, TextInput, Image} from 'react-native'
 import React from 'react'
-import Sort from '../resources/icons/sort.png';
 import {useNavigation} from '@react-navigation/native';
+import PaqueteInfo from '../screens/PaqueteInfo';
 
-import NinoInfo from '../screens/NinoInfo';
 
-const ninosList = ({usuario}) => {
-    
-    
-
+const DonacionList = ({donaciones}) => {
     const navigation = useNavigation();
-    
     const viewInfo = function(id){
         console.log(id)
-        navigation.navigate("NinosInfo", {id}); 
+        navigation.navigate("PaqueteInfo", {id}); 
     }
     
-    
-    const renderItem = (({item}) => 
-
-        <TouchableOpacity style={styles.button} onPress={() => viewInfo({itemID: item.idNino})}>
+    const renderItem = (({item})=>
+        <TouchableOpacity style={styles.button} onPress={() => viewInfo({itemID: item.idPaquete})} >
             <View style={styles.tipo}>
-                <Text>{item.idNino}</Text>
+                <Text>{item.idPaquete}</Text>
             </View>
             
             <View style={styles.mainInfo}>
-            <Text>{item.nombre}</Text>
-            <Text style={{fontSize:10}}>{item.colonia}, {item.municipio}</Text>
-            <Text>{item.estado}</Text>
+            <Text>{item.tipo}</Text>
+            <Text style={{fontSize:10}}>{(item.tipo).substr(-1)} - {item.GE} - {item.indice}</Text>
             </View>
             
             <View style={styles.group}>
-            <Text>{((item.genero).substr(-1)).toUpperCase()}{item.edad}</Text>
+            <Text>{item.GE}</Text>
             </View>
         </TouchableOpacity>
     );
@@ -39,27 +31,18 @@ const ninosList = ({usuario}) => {
   return (
     <View style={{height:'85%'}}>
         <View>
-            <Text style={styles.title}>Registros</Text>
+            <Text style={styles.title}>Donaciones</Text>
         </View>
         
-        <View style={styles.search}>
-            <TextInput 
-                placeholder='Buscar'
-                style={styles.busquedaInput}
-            />
-
-            <TouchableOpacity style={styles.filtro}>
-                <Image style={styles.icon} source={Sort}/>
-            </TouchableOpacity>
-        </View>
       <FlatList style={styles.container}
-      data={usuario}
+      data={donaciones}
       renderItem={renderItem}
       
       />
     </View>
   )
 }
+
 
 const styles = StyleSheet.create({
     container:{
@@ -131,4 +114,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ninosList
+
+export default DonacionList

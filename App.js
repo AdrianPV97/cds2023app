@@ -13,6 +13,7 @@ import Donacion from './screens/Donacion';
 import Camera from './screens/Scanner';
 import Entrega from './screens/Entrega';
 import Resumen from './screens/Resumen';
+import RegPaquete from './screens/RegPaquete';
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +50,10 @@ export default function App() {
         }}/> 
 
         <Stack.Screen name='Camera' component={Camera} options={{
+          headerShown: false 
+        }}/> 
+
+      <Stack.Screen name='RegPaquete' component={RegPaquete} options={{
           headerShown: false 
         }}/> 
 

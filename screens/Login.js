@@ -14,7 +14,7 @@ const Login = () => {
 
     const send = async () =>{
         try{
-            const url = 'https://b169-2806-2f0-91a1-850d-4dd5-4ea1-dff2-c37d.ngrok-free.app/';
+            const url = 'https://d71d-2806-2f0-91a1-850d-e0ad-1c4c-139f-88c1.ngrok-free.app/login';
             const data = {
                 "user":username,
                 "password":password
@@ -25,12 +25,7 @@ const Login = () => {
             console.log(err);
         }
     }
-    // const handleLogin = () => {
-    //     // Aquí puedes manejar la lógica de inicio de sesión
-    //     console.log('Username:', username);
-    //     console.log('Password:', password);
-    //     // Puedes realizar la autenticación o cualquier otra acción aquí
-    //   };
+
 
 
   return (

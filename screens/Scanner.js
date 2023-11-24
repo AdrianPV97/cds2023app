@@ -4,6 +4,11 @@ import { Camera, CameraType } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import CamerButton from '../components/camerButton';
 import { Button } from '@rneui/base';
+import RegPaquete from './RegPaquete';
+import {useNavigation} from '@react-navigation/native';
+import * as FileSystem from 'expo-file-system';
+
+
 
 import FormData from 'form-data';
 import axios from 'axios';
@@ -12,6 +17,7 @@ import axios from 'axios';
 
 
 const Scanner = () => {
+  const navigation = useNavigation();
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
@@ -28,28 +34,51 @@ const Scanner = () => {
 
   const takePicture = async ()=>{
     if(cameraRef){
-      try{
-        const data = await cameraRef.current.takePictureAsync();
+      try {
+        const data = await cameraRef.current.takePictureAsync({ quality: 0.1 });
         setImage(data.uri);
-      }catch(err){
-
+  
+        // Convierte la imagen a base64
+        const base64Image = await convertImageToBase64(data.uri);
+        setImage(base64Image)
+        //console.log(base64Image); // Aquí puedes ver el código base64 en la consola
+  
+      } catch (err) {
+        console.error(err);
       }
     }
   }
 
-  const senFile = async (file)=>{
-    console.log(file)
-    const formData = new FormData();
-    formData.append('file', {
-      uri:file,
-      type:'image/jpeg'
+  const convertImageToBase64 = async (imageUri) => {
+    const base64 = await FileSystem.readAsStringAsync(imageUri, {
+      encoding: FileSystem.EncodingType.Base64,
     });
-        
-    const response = await axios.post('https://b169-2806-2f0-91a1-850d-4dd5-4ea1-dff2-c37d.ngrok-free.app/donacion', formData, {headers:{
-      'Content-Type':'multipart/form-data',
-    },});
+    return base64;
+  };
+  
 
-    console.log(response);
+  const senFile = async (file)=>{
+    try{
+      //await MediaLibrary.createAssetAsync(file);
+      const response = await axios.post('https://d71d-2806-2f0-91a1-850d-e0ad-1c4c-139f-88c1.ngrok-free.app/donacion', {
+      data:file
+        });
+      //alert('Picture saved');
+      //setImage(null)
+      //console.log(response.data)
+      if(response.status === 200){
+        const imgSaved = response.data;
+        navigation.navigate("RegPaquete", {imgSaved});
+      }else{
+        alert('Error, vuelve a intentar');
+        setImage(null)
+      }
+    
+      
+    }catch(err){
+      console.log(err)
+    }
+    
   }
 
   if(hasCameraPermission === false){

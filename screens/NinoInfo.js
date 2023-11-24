@@ -6,16 +6,19 @@ import Menu from '../components/menu';
 const NinoInfo = ({route}) => {
   const id = route.params.id.itemID;
   
+  
   const[data, setData] = useState([]);
+  const[img, setImg] = useState();
     const renderInfo = (({info}) =>{
       // <Text>{info}</Text>
     });
     const loadInfo = async () =>{
       try{
-          const url = `https://b169-2806-2f0-91a1-850d-4dd5-4ea1-dff2-c37d.ngrok-free.app/ninos/${id}`;
+          const url = `https://d71d-2806-2f0-91a1-850d-e0ad-1c4c-139f-88c1.ngrok-free.app/ninos/${id}`;
           const response = await axios.get(url);
-          setData(response.data);
-          console.log(response.data.nombre)
+          setData(response.data[0]);
+          
+          //console.log(response.data[0].nombre)
           //setNino(response.data);
       }catch(err){
           console.log(err);
@@ -23,17 +26,23 @@ const NinoInfo = ({route}) => {
     }
   
   
+    
   
+
     useEffect(()=>{
       loadInfo();
     },[]);
+
+    
+    //const cadena = ((foto).substr(0,foto.length -3)+"raw=1");
 
   return (
     <View>
       <View style={{height:'87%'}}>
 
       <View style={styles.ninoFoto}>
-        <Image style={styles.image}/>
+        <Image style={styles.image} source={{uri: data.fotoNinos}}/>
+        
       </View>
 
       <View style={styles.titleCont}>
@@ -46,8 +55,8 @@ const NinoInfo = ({route}) => {
       </View>
 
       <View style={styles.titlesTwoCont}> 
-        <Text style={styles.info}>Masculino</Text>  
-        <Text style={styles.info}>22 años</Text> 
+        <Text style={styles.info}>{data.genero}</Text>  
+        <Text style={styles.info}>{data.edad} años</Text> 
       </View>
 
       <View style={styles.titlesTwoCont}> 
@@ -56,8 +65,8 @@ const NinoInfo = ({route}) => {
       </View>
 
       <View style={styles.titlesTwoCont}> 
-        <Text style={styles.info}>1</Text>  
-        <Text style={styles.info}>Informacion sobre la condicion del niño</Text> 
+        <Text style={styles.info}>{data.prioridad}</Text>  
+        <Text style={styles.info}></Text> 
       </View>
 
       <View style={styles.titlesTwoCont}>
@@ -65,7 +74,7 @@ const NinoInfo = ({route}) => {
       </View>
 
       <View style={styles.titlesTwoCont}>
-        <Text style={styles.info}>{data.domicilio}</Text>
+        <Text style={styles.info}>{data.colonia}, {data.municipio}</Text>
       </View>
 
       <View style={styles.titlesTwoCont}>

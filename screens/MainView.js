@@ -12,7 +12,7 @@ const MainView = () => {
   
   const loadNinos = async () =>{
     try{
-        const url = 'https://b359-38-123-196-127.ngrok-free.app/ninoss';
+        const url = 'https://cds2023-young-silence-2831.fly.dev/ninoss';
         const response = await axios.get(url);
         //navigation.navigate("MainScreen");
         setNino(response.data);

@@ -14,7 +14,7 @@ const NinoInfo = ({route}) => {
     });
     const loadInfo = async () =>{
       try{
-          const url = `https://b359-38-123-196-127.ngrok-free.app/ninos/${id}`;
+          const url = `https://cds2023-young-silence-2831.fly.dev/ninos/${id}`;
           const response = await axios.get(url);
           setData(response.data[0]);
           

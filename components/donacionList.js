@@ -12,18 +12,18 @@ const DonacionList = ({donaciones}) => {
     }
     
     const renderItem = (({item})=>
-        <TouchableOpacity style={styles.button} onPress={() => viewInfo({itemID: item.idPaquete})} >
+        <TouchableOpacity style={styles.button} onPress={() => viewInfo({itemID: item.id})} >
             <View style={styles.tipo}>
-                <Text>{item.idPaquete}</Text>
+                <Text>{item.id}</Text>
             </View>
             
             <View style={styles.mainInfo}>
             <Text>{item.tipo}</Text>
-            <Text style={{fontSize:10}}>{(item.tipo).substr(-1)} - {item.GE} - {item.indice}</Text>
+            <Text style={{fontSize:10}}>{(item.tipo).charAt(0)} - {item.grupo} - {item.indice}</Text>
             </View>
             
             <View style={styles.group}>
-            <Text>{item.GE}</Text>
+            <Text>{item.grupo}</Text>
             </View>
         </TouchableOpacity>
     );

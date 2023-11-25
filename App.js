@@ -14,6 +14,7 @@ import Camera from './screens/Scanner';
 import Entrega from './screens/Entrega';
 import Resumen from './screens/Resumen';
 import RegPaquete from './screens/RegPaquete';
+import Confirm from './screens/Confirm';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,9 +34,7 @@ export default function App() {
         <Stack.Screen name='NinosInfo' component={NinosInfo} options={{
           //headerShown: false 
         }}/>
-        <Stack.Screen name='PaqueteInfo' component={PaqueteInfo} options={{
-          headerShown: false 
-        }}/>
+        <Stack.Screen name='PaqueteInfo' component={PaqueteInfo} />
 
         <Stack.Screen name='Donacion' component={Donacion} options={{
           headerShown: false 
@@ -54,6 +53,10 @@ export default function App() {
         }}/> 
 
       <Stack.Screen name='RegPaquete' component={RegPaquete} options={{
+          headerShown: false 
+        }}/> 
+
+        <Stack.Screen name='Confirm' component={Confirm} options={{
           headerShown: false 
         }}/> 
 

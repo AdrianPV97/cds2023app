@@ -10,12 +10,14 @@ import NinosList from '../components/ninosList';
 import Ninos from '../components/ninos';
 
 const Home = () => {
+    
 
+//    console.log(voluntario);
     const[nn, setNino] = useState([]);
   
     const loadNinos = async () =>{
       try{
-          const url = 'https://b359-38-123-196-127.ngrok-free.app/ninos';
+          const url = 'https://cds2023-young-silence-2831.fly.dev/ninos';
           const response = await axios.get(url);
           //navigation.navigate("MainScreen");
           setNino(response.data);
@@ -34,7 +36,7 @@ const Home = () => {
   return (
     <View>
       <UserCard />
-      <Ninos/>
+      <Ninos />
     </View>
   )
 }

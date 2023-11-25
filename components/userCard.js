@@ -3,6 +3,8 @@ import React from 'react'
 import logoS from '../assets/sempiterno.png';
 
 const userCard = () => {
+  
+  
   return (
     <View style={styles.container}>
       <View>
@@ -10,8 +12,8 @@ const userCard = () => {
       </View>
 
       <View style={styles.texto}>
-        <Text>Bienvenido</Text>
-        <Text style={{fontWeight:'bold'}}>Adrian Paredes</Text>
+        <Text>Bienvenido/a</Text>
+        <Text style={{fontWeight:'bold'}}></Text>
       </View>
 
       <View>
@@ -30,7 +32,8 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'space-around',
-        alignContent:'center'
+        alignContent:'center',
+        marginTop:40
         
     },
     imagen:{

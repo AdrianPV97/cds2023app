@@ -60,7 +60,7 @@ const Scanner = () => {
   const senFile = async (file)=>{
     try{
       //await MediaLibrary.createAssetAsync(file);
-      const response = await axios.post('https://b359-38-123-196-127.ngrok-free.app/donacion', {
+      const response = await axios.post('https://cds2023-young-silence-2831.fly.dev/donacion', {
       data:file
         });
       //alert('Picture saved');

@@ -19,9 +19,9 @@ const ninosList = ({usuario}) => {
     
     const renderItem = (({item}) => 
 
-        <TouchableOpacity style={styles.button} onPress={() => viewInfo({itemID: item.idNino})}>
+        <TouchableOpacity style={styles.button} onPress={() => viewInfo({itemID: item.id})}>
             <View style={styles.tipo}>
-                <Text>{item.idNino}</Text>
+                <Text>{item.id}</Text>
             </View>
             
             <View style={styles.mainInfo}>
@@ -31,7 +31,7 @@ const ninosList = ({usuario}) => {
             </View>
             
             <View style={styles.group}>
-            <Text>{((item.genero).substr(-1)).toUpperCase()}{item.edad}</Text>
+            <Text>{((item.genero).charAt(0)).toUpperCase()}{item.edad}</Text>
             </View>
         </TouchableOpacity>
     );

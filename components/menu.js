@@ -9,7 +9,7 @@ import Resumen from '../resources/icons/resume.png';
 //const navigation = useNavigation();
 
 
-const Menu = () => {
+const Menu = ({user}) => {
     const navigation = useNavigation();
     const nav = function(opt){
         //console.log(opt)

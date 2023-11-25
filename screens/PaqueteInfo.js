@@ -12,7 +12,7 @@ const PaqueteInfo = ({route}) => {
     });
     const loadInfo = async () =>{
       try{
-          const url = `https://b359-38-123-196-127.ngrok-free.app/donacion/${id}`;
+          const url = `https://cds2023-young-silence-2831.fly.dev/donacion/${id}`;
           const response = await axios.get(url);
           setData(response.data);
           
@@ -52,7 +52,7 @@ const PaqueteInfo = ({route}) => {
       </View>
 
       <View style={styles.titlesTwoCont}> 
-        <Text style={styles.info}><Text style={styles.info}>{data.GE}</Text></Text>  
+        <Text style={styles.info}><Text style={styles.info}>{data.grupo}</Text></Text>  
       </View>
 
       <View style={styles.titlesTwoCont}> 
@@ -60,11 +60,11 @@ const PaqueteInfo = ({route}) => {
       </View>
 
       <View style={styles.titlesTwoCont}> 
-        <Text style={styles.info}><Text style={styles.info}>{(data.tipo)} - {data.GE} - {data.indice}</Text></Text>  
+        <Text style={styles.info}><Text style={styles.info}>{(data.tipo)} - {data.grupo} - {data.indice}</Text></Text>  
       </View>
 
-      <TouchableOpacity style={styles.titlesTwoCont}><Text>Foto paquete</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.titlesTwoCont}><Text>Foto entrega</Text></TouchableOpacity> 
+      <TouchableOpacity style={styles.titlesTwoCont}><Text style={styles.boton}>Foto paquete</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.titlesTwoCont}><Text style={styles.boton}>Foto entrega</Text></TouchableOpacity> 
 
       </View>
 
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     paddingLeft:30,
     paddingRight:100,
     alignItems:'center',
+    marginTop:30,
     justifyContent:'space-between'
   },
   titlesSingleCont:{
@@ -115,7 +116,14 @@ const styles = StyleSheet.create({
     paddingRight:5,
     paddingTop:2,
     paddingBottom:2,
+    fontSize:25,
     backgroundColor:'white'
+  },
+  boton:{
+    opacity:0.2
+  },
+  fontTitles:{
+    fontSize:20
   }
 })
 

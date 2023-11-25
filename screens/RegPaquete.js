@@ -15,7 +15,7 @@ const RegPaquete = ({route}) => {
   const send = async () =>{
     
     try{
-        const url = 'https://b359-38-123-196-127.ngrok-free.app/registropaquete';
+        const url = 'https://cds2023-young-silence-2831.fly.dev/registropaquete';
         const data = {
             "foto":imgSaved,
             "group":selectedGroup,
@@ -25,7 +25,7 @@ const RegPaquete = ({route}) => {
         //navigation.navigate("Home");
         if(response.status === 200){
           setRegister('success');
-          navigation.navigate("Home");
+          navigation.navigate("Confirm");
         }
         console.log(response.status);
     }catch(err){

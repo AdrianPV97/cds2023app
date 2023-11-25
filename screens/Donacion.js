@@ -11,9 +11,11 @@ const Donacion = () => {
   
     const loadDonacion = async () =>{
       try{
-          const url = 'https://b359-38-123-196-127.ngrok-free.app/donacion';
+          const url = 'https://cds2023-young-silence-2831.fly.dev/donacion';
           const response = await axios.get(url);
+          //console.log(response.data);
           setDonacion(response.data);
+          
       }catch(err){
           console.log(err);
       }
@@ -39,7 +41,7 @@ const Donacion = () => {
 
 const styles = StyleSheet.create({
   container:{
-    height:'88%',
+    height:'80%',
     width:'100%',
     marginTop:10,
     paddingRight:20,

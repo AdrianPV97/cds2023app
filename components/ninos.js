@@ -11,7 +11,7 @@ const Ninos = () => {
   
     const loadNinos = async () =>{
       try{
-          const url = 'https://b359-38-123-196-127.ngrok-free.app/ninos';
+          const url = 'https://cds2023-young-silence-2831.fly.dev/ninos';
           const response = await axios.get(url);
           
           setNino(response.data);
@@ -28,7 +28,7 @@ const Ninos = () => {
   return (
     <View style={styles.container}>
         <NinosList usuario={nn}/>
-        <Menu/>
+        <Menu />
     </View>
   )
 }
@@ -36,7 +36,7 @@ const Ninos = () => {
 
 const styles = StyleSheet.create({
     container:{
-        height:'89%',
+        height:'83%',
         width:'100%',
         marginTop:10,
         paddingRight:20,

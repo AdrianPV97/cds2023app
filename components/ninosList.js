@@ -115,14 +115,12 @@ const styles = StyleSheet.create({
         height:'100%',
         width:'45%',
         alignItems:'center',
-        justifyContent:'space-between',
-        //backgroundColor:'green'
+        justifyContent:'space-between'
     },
     group:{
         height:'100%',
         width:'10%',
         fontWeight:'bold'
-        //backgroundColor:'orange'
     },
     icon:{
         height:50,

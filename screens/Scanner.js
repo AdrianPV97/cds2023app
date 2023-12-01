@@ -36,12 +36,12 @@ const Scanner = () => {
     if(cameraRef){
       try {
         const data = await cameraRef.current.takePictureAsync({ quality: 0.1 });
-        setImage(data.uri);
+        setImage(null);
   
         // Convierte la imagen a base64
         const base64Image = await convertImageToBase64(data.uri);
         setImage(base64Image)
-        //console.log(base64Image); // Aquí puedes ver el código base64 en la consola
+        
   
       } catch (err) {
         console.error(err);
@@ -59,13 +59,12 @@ const Scanner = () => {
 
   const senFile = async (file)=>{
     try{
-      //await MediaLibrary.createAssetAsync(file);
-      const response = await axios.post('https://cds2023-young-silence-2831.fly.dev/donacion', {
+      
+      const response = await axios.post('http://146.190.48.91:3000/donacion', {
       data:file
         });
-      //alert('Picture saved');
-      //setImage(null)
-      //console.log(response.data)
+      
+      
       if(response.status === 200){
         const imgSaved = response.data;
         navigation.navigate("RegPaquete", {imgSaved});

@@ -44,9 +44,7 @@ export default function App() {
           headerShown: false 
         }}/>
 
-        <Stack.Screen name='Resumen' component={Resumen} options={{
-          headerShown: false 
-        }}/> 
+        <Stack.Screen name='Resumen' component={Resumen} /> 
 
         <Stack.Screen name='Camera' component={Camera} options={{
           headerShown: false 

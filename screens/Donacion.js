@@ -11,9 +11,8 @@ const Donacion = () => {
   
     const loadDonacion = async () =>{
       try{
-          const url = 'https://cds2023-young-silence-2831.fly.dev/donacion';
+          const url = 'http://146.190.48.91:3000/donacion';
           const response = await axios.get(url);
-          //console.log(response.data);
           setDonacion(response.data);
           
       }catch(err){
@@ -28,8 +27,6 @@ const Donacion = () => {
   return (
     <View style={{backgroundColor:'#ececec'}}>
       <View style={{marginTop:20}}><UserCard/></View>
-      {/* <View style={styles.container}></View>
-      <View style={styles.menu}><Menu/></View> */}
       <View style={styles.container}>
       <DonacionList donaciones={donacion}/>
       <Menu/>

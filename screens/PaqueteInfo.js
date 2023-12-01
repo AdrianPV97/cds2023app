@@ -12,19 +12,18 @@ const PaqueteInfo = ({route}) => {
     });
     const loadInfo = async () =>{
       try{
-          const url = `https://cds2023-young-silence-2831.fly.dev/donacion/${id}`;
+          const url = `http://146.190.48.91:3000/donacion/${id}`;
           const response = await axios.get(url);
           setData(response.data);
           
-          //console.log(response.data[0].nombre)
-          //setNino(response.data);
+          
       }catch(err){
           console.log(err);
       }
     }
   
   
-    // <Text style={styles.info}> - {data.GE} - {data.indice}</Text>  
+    
     
   
 
@@ -37,10 +36,7 @@ const PaqueteInfo = ({route}) => {
     <View>
       <View style={{height:'80%', marginTop:100}}>
 
-      {/* <View style={styles.ninoFoto}>
-        <Image style={styles.image} source={{uri: data.fotoNinos}}/>
-        
-      </View> */}
+      
 
       <View style={styles.titleCont}>
         <Text style={{fontSize:20, fontWeight:'bold'}}>Niño:</Text>

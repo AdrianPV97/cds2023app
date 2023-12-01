@@ -6,13 +6,11 @@ import Dona from '../resources/icons/donate.png';
 import Camera from '../resources/icons/scanner.png';
 import Entrega from '../resources/icons/delivered.png';
 import Resumen from '../resources/icons/resume.png';
-//const navigation = useNavigation();
 
 
 const Menu = ({user}) => {
     const navigation = useNavigation();
     const nav = function(opt){
-        //console.log(opt)
         navigation.navigate(opt);
     }
 

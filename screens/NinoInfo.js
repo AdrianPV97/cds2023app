@@ -10,16 +10,15 @@ const NinoInfo = ({route}) => {
   const[data, setData] = useState([]);
   const[img, setImg] = useState();
     const renderInfo = (({info}) =>{
-      // <Text>{info}</Text>
+    
     });
     const loadInfo = async () =>{
       try{
-          const url = `https://cds2023-young-silence-2831.fly.dev/ninos/${id}`;
+          const url = `http://146.190.48.91:3000/ninos/${id}`;
           const response = await axios.get(url);
           setData(response.data[0]);
           
-          //console.log(response.data[0].nombre)
-          //setNino(response.data);
+          
       }catch(err){
           console.log(err);
       }
@@ -34,7 +33,7 @@ const NinoInfo = ({route}) => {
     },[]);
 
     
-    //const cadena = ((foto).substr(0,foto.length -3)+"raw=1");
+    
 
   return (
     <View>

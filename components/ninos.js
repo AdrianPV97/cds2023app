@@ -11,7 +11,7 @@ const Ninos = () => {
   
     const loadNinos = async () =>{
       try{
-          const url = 'https://cds2023-young-silence-2831.fly.dev/ninos';
+          const url = 'http://146.190.48.91:3000/ninos';
           const response = await axios.get(url);
           
           setNino(response.data);

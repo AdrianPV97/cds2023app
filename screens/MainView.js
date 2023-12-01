@@ -12,9 +12,8 @@ const MainView = () => {
   
   const loadNinos = async () =>{
     try{
-        const url = 'https://cds2023-young-silence-2831.fly.dev/ninoss';
+        const url = 'http://146.190.48.91:3000/ninoss';
         const response = await axios.get(url);
-        //navigation.navigate("MainScreen");
         setNino(response.data);
     }catch(err){
         console.log(err);
@@ -31,7 +30,6 @@ const MainView = () => {
     <View style={{marginTop:50, backgroundColor:'#ececec'}}>
       <UserCard />
       <Ninos/>
-      {/* <NinosList usuario={nn}/> */}
     </View>
   )
 }

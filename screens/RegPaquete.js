@@ -6,8 +6,8 @@ import axios from "axios";
 import {useNavigation} from '@react-navigation/native';
 
 const RegPaquete = ({route}) => {
-  const [selectedGroup, setSelectedGroup] = useState('Grupo');
-  const [selectedTipo, setSelectedTipo] = useState('Tipo de paquete');
+  const [selectedGroup, setSelectedGroup] = useState('F1');
+  const [selectedTipo, setSelectedTipo] = useState('Juguetes');
   const [register, setRegister] = useState('null');
   const imgSaved = route.params.imgSaved;
   const navigation = useNavigation();
@@ -15,19 +15,19 @@ const RegPaquete = ({route}) => {
   const send = async () =>{
     
     try{
-        const url = 'https://cds2023-young-silence-2831.fly.dev/registropaquete';
+        const url = 'http://146.190.48.91:3000/registropaquete';
         const data = {
             "foto":imgSaved,
             "group":selectedGroup,
             "tipo": selectedTipo,
         }
         const response = await axios.post(url, data);
-        //navigation.navigate("Home");
+        
         if(response.status === 200){
           setRegister('success');
-          navigation.navigate("Confirm");
+          navigation.navigate("Confirm", {selectedGroup, selectedTipo});
         }
-        console.log(response.status);
+        //console.log(response.status);
     }catch(err){
         console.log(err);
     }
@@ -41,10 +41,11 @@ const RegPaquete = ({route}) => {
         <Text style={styles.secondText}>Completa los siguientes datos para el registro</Text>
 
         <Picker
-        style={{marginTop:30, width:'80%', textAlign:'center', marginTop:50}}
+        style={{marginTop:5, width:'80%', textAlign:'center'}}
         selectedValue={selectedGroup}
         onValueChange={(itemValue, itemIdex) => setSelectedGroup(itemValue)}
         >
+          <Picker.Item label="F0" value="F0"/>
           <Picker.Item label="F1" value="F1"/>
           <Picker.Item label="F2" value="F2"/>
           <Picker.Item label="F3" value="F3"/>
@@ -58,6 +59,7 @@ const RegPaquete = ({route}) => {
           <Picker.Item label="F11" value="F11"/>
           <Picker.Item label="F12" value="F12"/>
 
+          <Picker.Item label="M0" value="M0"/>
           <Picker.Item label="M1" value="M1"/>
           <Picker.Item label="M2" value="M2"/>
           <Picker.Item label="M3" value="M3"/>
@@ -71,10 +73,10 @@ const RegPaquete = ({route}) => {
           <Picker.Item label="M11" value="M11"/>
           <Picker.Item label="M12" value="M12"/>
         </Picker>
-        {/*Picker de paquete */}
+        
 
         <Picker
-        style={{marginTop:30, width:'90%', textAlign:'center'}}
+        style={{marginTop:5, width:'90%', textAlign:'center'}}
         selectedValue={selectedTipo}
         onValueChange={(itemValue, itemIdex) => setSelectedTipo(itemValue)}
         >
@@ -104,9 +106,9 @@ const RegPaquete = ({route}) => {
 
 const styles = StyleSheet.create({
   formContainer:{
-    height:'80%',
+    height:'60%',
     width:'100%',
-    marginTop:60,
+    marginTop:30,
     borderRadius:20,
     paddingTop:50,
     alignContent:'center',

@@ -15,6 +15,7 @@ import Entrega from './screens/Entrega';
 import Resumen from './screens/Resumen';
 import RegPaquete from './screens/RegPaquete';
 import Confirm from './screens/Confirm';
+import PaqueteImagen from './screens/PaqueteImagen';
 
 const Stack = createNativeStackNavigator();
 
@@ -54,9 +55,12 @@ export default function App() {
           headerShown: false 
         }}/> 
 
+        
         <Stack.Screen name='Confirm' component={Confirm} options={{
           headerShown: false 
         }}/> 
+
+      <Stack.Screen name='PaqueteImagen' component={PaqueteImagen} /> 
 
         
       </Stack.Navigator>

@@ -1,11 +1,12 @@
 import { View, Text, Image, TextInput, Button, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logoS from '../assets/sempiterno.png';
 import {Picker} from '@react-native-picker/picker';
 import axios from "axios";
 import { senData } from '../api/login';
 import {useNavigation} from '@react-navigation/native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+const MY_STORAGE_KEY = 'user';
 
 const Login = () => {
 
@@ -13,14 +14,18 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const navigation = useNavigation();
 
+
+    const storeData = async (value) => {
+      try {
+        await AsyncStorage.setItem(MY_STORAGE_KEY, value);
+      } catch (e) {
+        console.log("Login error: ", e);
+      }
+    };
+
     const send = async () =>{
         try{
-            // const url = 'https://b359-38-123-196-127.ngrok-free.app/login';
-            // const data = {
-            //     "user":username,
-            //     "password":password
-            // }
-            // const response = await axios.post(url, data);
+            await storeData(selectedUser);
             navigation.navigate("Home", {selectedUser});
         }catch(err){
             console.log(err);
@@ -39,12 +44,14 @@ const Login = () => {
       selectedValue={selectedUser}
       onValueChange={(itemValue, itemIdex) => setSelectedUser(itemValue)}
       >
-        <Picker.Item label="Penelope Aceves" value="Penelope Aceves"/>
         <Picker.Item label="Jennifer González" value="Jennifer González"/>
         <Picker.Item label="Carlos Alvarado" value="Carlos Alvarado"/>
         <Picker.Item label="Melanny Venegas" value="Melanny Venegas"/>
         <Picker.Item label="Oscar Cortes" value="Oscar Cortes"/>
-        <Picker.Item label="Adrian Paredes" value="Adrian Paredes"/>
+        <Picker.Item label="Ulises Ibarra" value="Ulises Ibarra"/>
+        <Picker.Item label="Evenly Velazco" value="Evenly Velazco"/>
+        <Picker.Item label="Jan" value="Jan"/>
+        <Picker.Item label="Otro" value="Otro"/>
       </Picker>
       {/* <TextInput 
         style={styles.input}

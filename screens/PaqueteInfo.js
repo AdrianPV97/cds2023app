@@ -1,9 +1,14 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import { useNavigation } from '@react-navigation/native';
+
 
 const PaqueteInfo = ({route}) => {
   const id = route.params.id.itemID;
+
+  const navigation = useNavigation();
+
   
   const[data, setData] = useState([]);
   const[img, setImg] = useState();
@@ -15,7 +20,7 @@ const PaqueteInfo = ({route}) => {
           const url = `http://146.190.48.91:3000/donacion/${id}`;
           const response = await axios.get(url);
           setData(response.data);
-          
+          //Evidencia
           
       }catch(err){
           console.log(err);
@@ -59,7 +64,7 @@ const PaqueteInfo = ({route}) => {
         <Text style={styles.info}><Text style={styles.info}>{(data.tipo)} - {data.grupo} - {data.indice}</Text></Text>  
       </View>
 
-      <TouchableOpacity style={styles.titlesTwoCont}><Text style={styles.boton}>Foto paquete</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.titlesTwoCont} onPress={() => navigation.navigate('PaqueteImagen', { ruta: data.evidencia })}><Text>Foto paquete</Text></TouchableOpacity>
       <TouchableOpacity style={styles.titlesTwoCont}><Text style={styles.boton}>Foto entrega</Text></TouchableOpacity> 
 
       </View>

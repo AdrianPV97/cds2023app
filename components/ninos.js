@@ -13,7 +13,6 @@ const Ninos = () => {
       try{
           const url = 'http://146.190.48.91:3000/ninos';
           const response = await axios.get(url);
-          
           setNino(response.data);
       }catch(err){
           console.log(err);

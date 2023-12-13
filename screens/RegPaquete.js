@@ -1,9 +1,11 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import UserCard from '../components/userCard';
 import {Picker} from '@react-native-picker/picker';
 import axios from "axios";
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+const MY_STORAGE_KEY = 'user';
 
 const RegPaquete = ({route}) => {
   const [selectedGroup, setSelectedGroup] = useState('F1');
@@ -13,6 +15,14 @@ const RegPaquete = ({route}) => {
   const navigation = useNavigation();
   
   const send = async () =>{
+
+    const storeData = async (value) => {
+      try {
+        await AsyncStorage.setItem(MY_STORAGE_KEY, value);
+      } catch (e) {
+        console.log("Login error: ", e);
+      }
+    };
     
     try{
         const url = 'http://146.190.48.91:3000/registropaquete';
@@ -20,6 +30,7 @@ const RegPaquete = ({route}) => {
             "foto":imgSaved,
             "group":selectedGroup,
             "tipo": selectedTipo,
+            "voluntario":MY_STORAGE_KEY
         }
         const response = await axios.post(url, data);
         
@@ -32,6 +43,11 @@ const RegPaquete = ({route}) => {
         console.log(err);
     }
 }
+
+useEffect(()=>{
+  loadNinos();
+},[]);
+
   return (
     <View>
       <View style={{marginTop:30}}><UserCard/></View>

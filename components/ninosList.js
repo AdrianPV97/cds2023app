@@ -1,5 +1,5 @@
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, TextInput, Image} from 'react-native'
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Sort from '../resources/icons/sort.png';
 import {useNavigation} from '@react-navigation/native';
 
@@ -7,9 +7,22 @@ import NinoInfo from '../screens/NinoInfo';
 
 const ninosList = ({usuario}) => {
     
-    
-
     const navigation = useNavigation();
+    const [searchText, setSearchText] = useState('');
+    const [filteredUsuario, setFilteredUsuario] = useState(usuario);
+
+    useEffect(() => {
+        // Filtrar usuarios basándose en el texto ingresado
+        const filteredUsers = usuario.filter((user) =>
+          user.grupo.toLowerCase().includes(searchText.toLowerCase()) ||
+          user.nombre.toLowerCase().includes(searchText.toLowerCase()) ||
+          user.colonia.toLowerCase().includes(searchText.toLowerCase()) ||
+          user.municipio.toLowerCase().includes(searchText.toLowerCase()) ||
+          user.estado.toLowerCase().includes(searchText.toLowerCase())
+        );
+        
+        setFilteredUsuario(filteredUsers);
+      }, [searchText, usuario]);
     
     const viewInfo = function(id){
         console.log(id)
@@ -18,7 +31,6 @@ const ninosList = ({usuario}) => {
     
     
     const renderItem = (({item}) => 
-
         <TouchableOpacity style={styles.button} onPress={() => viewInfo({itemID: item.id})}>
             <View style={styles.tipo}>
                 <Text>{item.id}</Text>
@@ -31,7 +43,7 @@ const ninosList = ({usuario}) => {
             </View>
             
             <View style={styles.group}>
-            <Text>{((item.genero).charAt(0)).toUpperCase()}{item.edad}</Text>
+            <Text>{item.grupo}</Text>
             </View>
         </TouchableOpacity>
     );
@@ -46,17 +58,17 @@ const ninosList = ({usuario}) => {
             <TextInput 
                 placeholder='Buscar'
                 style={styles.busquedaInput}
+                value={searchText}
+                onChangeText={(text) => setSearchText(text)}
             />
-
-            <TouchableOpacity style={styles.filtro}>
-                <Image style={styles.icon} source={Sort}/>
-            </TouchableOpacity>
         </View>
-      <FlatList style={styles.container}
-      data={usuario}
-      renderItem={renderItem}
-      
-      />
+
+
+            <FlatList style={styles.container}
+                data={filteredUsuario}
+                keyExtractor={(item) => item.id}
+                renderItem={renderItem} 
+            />
     </View>
   )
 }
@@ -82,7 +94,7 @@ const styles = StyleSheet.create({
     },
     busquedaInput:{
         height:'90%',
-        width:'70%',
+        width:'90%',
         borderRadius:50,
         paddingLeft:20,
         backgroundColor:'#ececec'

@@ -1,10 +1,31 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState  } from 'react'
 import logoS from '../assets/sempiterno.png';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+const MY_STORAGE_KEY = 'user';
 
 const userCard = () => {
+
+  const [value, setValue] = useState(null);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    try {
+      const storedValue = await AsyncStorage.getItem(MY_STORAGE_KEY);
+      console.log("-----------------------------------")
+      console.log(value);
+      
+        setValue(storedValue);
+      
+    } catch (e) {
+    }
+  };
+
   
-  
+
   return (
     <View style={styles.container}>
       <View>
@@ -12,7 +33,7 @@ const userCard = () => {
       </View>
 
       <View style={styles.texto}>
-        <Text>Bienvenido/a</Text>
+        <Text>{value}</Text>
         <Text style={{fontWeight:'bold'}}></Text>
       </View>
 

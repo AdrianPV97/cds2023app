@@ -12,7 +12,6 @@ const ninosList = ({usuario}) => {
     const [filteredUsuario, setFilteredUsuario] = useState(usuario);
 
     useEffect(() => {
-        // Filtrar usuarios basándose en el texto ingresado
         const filteredUsers = usuario.filter((user) =>
           user.grupo.toLowerCase().includes(searchText.toLowerCase()) ||
           user.nombre.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -25,7 +24,6 @@ const ninosList = ({usuario}) => {
       }, [searchText, usuario]);
     
     const viewInfo = function(id){
-        console.log(id)
         navigation.navigate("NinosInfo", {id}); 
     }
     

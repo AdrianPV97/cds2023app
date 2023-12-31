@@ -32,9 +32,8 @@ export default function App() {
           headerShown: false
         }}/>
       
-        <Stack.Screen name='NinosInfo' component={NinosInfo} options={{
-          //headerShown: false 
-        }}/>
+        <Stack.Screen name='NinosInfo' component={NinosInfo} }/>
+  
         <Stack.Screen name='PaqueteInfo' component={PaqueteInfo} />
 
         <Stack.Screen name='Donacion' component={Donacion} options={{

@@ -13,14 +13,14 @@ const PaqueteInfo = ({route}) => {
   const[data, setData] = useState([]);
   const[img, setImg] = useState();
     const renderInfo = (({info}) =>{
-      // <Text>{info}</Text>
+      
     });
     const loadInfo = async () =>{
       try{
           const url = `http://146.190.48.91:3000/donacion/${id}`;
           const response = await axios.get(url);
           setData(response.data);
-          //Evidencia
+          
           
       }catch(err){
           console.log(err);

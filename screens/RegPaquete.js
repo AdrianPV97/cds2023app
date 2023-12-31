@@ -38,7 +38,7 @@ const RegPaquete = ({route}) => {
           setRegister('success');
           navigation.navigate("Confirm", {selectedGroup, selectedTipo});
         }
-        //console.log(response.status);
+        
     }catch(err){
         console.log(err);
     }

@@ -53,20 +53,7 @@ const Login = () => {
         <Picker.Item label="Jan" value="Jan"/>
         <Picker.Item label="Otro" value="Otro"/>
       </Picker>
-      {/* <TextInput 
-        style={styles.input}
-        placeholder='Correo electronico'
-        onChangeText={(text) => setUsername(text)}
-        value={username}
-      />
-
-      <TextInput
-        style={styles.input}
-        placeholder='contraseña'
-        onChangeText={(text) => setPassword(text)}
-        value={password}
-        secureTextEntry={true} // Esto oculta la entrada del texto
-      /> */}
+     
 
       <Button title='Iniciar Sesion' style={styles.button} onPress={send}/>
 

@@ -17,11 +17,7 @@ const Resumen = () => {
     try{
         const url = `http://146.190.48.91:3000/resumen`;
         const response = await axios.get(url);
-        setResumen(response.data[0]);
-        //console.log(response.data[0]);
-        //setData(response.data);
-        
-        
+        setResumen(response.data[0]); 
     }catch(err){
         console.log(err);
     }

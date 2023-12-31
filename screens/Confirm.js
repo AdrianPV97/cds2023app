@@ -11,10 +11,9 @@ const Confirm = () => {
     try{
         const url = `http://146.190.48.91:3000/paqueteid`;
         const response = await axios.get(url);
-        //console.log(response.data)
         setData(response.data);
     }catch(err){
-        console.log("Erros");
+        
     }
   }
 

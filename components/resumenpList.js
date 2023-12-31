@@ -10,7 +10,6 @@ const ResumenpList = ({res, ninos}) => {
     const renderResumen2 = ((item, index, ninos) => 
     
     <View style={styles.tipo}>
-        {/* <Text style={{textAlign:'center'}}>{item.conteo_paquetes - ninos[index].conteo}</Text> */}
         <Text style={{textAlign:'center'}}>{Math.abs(item.conteo_paquetes - ninos[index].conteo)}</Text>
     </View>
     );

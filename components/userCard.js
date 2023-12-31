@@ -15,8 +15,6 @@ const userCard = () => {
   const getData = async () => {
     try {
       const storedValue = await AsyncStorage.getItem(MY_STORAGE_KEY);
-      console.log("-----------------------------------")
-      console.log(value);
       
         setValue(storedValue);
       

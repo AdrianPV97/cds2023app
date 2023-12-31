@@ -10,7 +10,6 @@ export default function PaqueteImagen() {
     const [imagenURL, setImagenURL] = useState('');
 
     useEffect(() => {
-        // Obtener la URL de la imagen desde tu servidor
         const nombreArchivo = 'nombreDeLaImagen.jpg';
         const url = `http://146.190.48.91:3000/image/${ruta}`;
         setImagenURL(url);
